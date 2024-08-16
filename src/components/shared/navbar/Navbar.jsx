@@ -8,25 +8,25 @@ const Navbar = () => {
   const { user, logOut } = useAuth()
   const [isOpen, setIsOpen] = useState(false);
 
-  // const navItems = (
-  //   <>
-  //     <NavLink to="/">
-  //       <li>
-  //         <a>Home</a>
-  //       </li>
-  //     </NavLink>
-  //     <NavLink to="/all-classes">
-  //       <li>
-  //         <a>All Classes</a>
-  //       </li>
-  //     </NavLink>
-  //     <NavLink to="/instructor">
-  //       <li>
-  //         <a>Teach on SkillTrack</a>
-  //       </li>
-  //     </NavLink>
-  //   </>
-  // );
+  const navItems = (
+    <>
+      <NavLink to="/">
+        <li>
+          <a>Home</a>
+        </li>
+      </NavLink>
+      {/* <NavLink to="/all-classes">
+        <li>
+          <a>All Classes</a>
+        </li>
+      </NavLink>
+      <NavLink to="/instructor">
+        <li>
+          <a>Teach on SkillTrack</a>
+        </li>
+      </NavLink> */}
+    </>
+  );
 
     return (
       <div className=" navbar fixed max max-w-7xl bg-white z-10 shadow-sm">
@@ -53,7 +53,7 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              {/* {navItems} */}
+              {navItems}
             </ul>
           </div>
           {/* <Link to="/">
@@ -64,7 +64,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          {/* <ul className="menu menu-horizontal px-1">{navItems}</ul> */}
+          <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
         <div className="navbar-end">
           
@@ -100,12 +100,12 @@ const Navbar = () => {
 
             {user ? (
               <>
-              <Link
+              {/* <Link
               to="/dashboard"
               className="block  px-4 py-3 hover:bg-neutral-100 transition font-semibold"
             >
             Dashboard
-            </Link>
+            </Link> */}
                 <div
                   onClick={logOut}
                   className="px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer"

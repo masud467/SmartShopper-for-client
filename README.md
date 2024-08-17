@@ -1,8 +1,35 @@
-# React + Vite
+## Website Name: SmartShopper
+Server Repository: https://github.com/masud467/smartShopper-for-server
+## Concept:
+This is the frontend for the **SmartShopper** web application, which allows users to browse, filter, sort, and search products in an online store. It is built using React.js and React Query for data fetching.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Technologies Used
+- React.js
+- React Query
+- Axios
+- Tailwind CSS
 
-Currently, two official plugins are available:
+## Features
+- Pagination for product listings.
+- Search products by name.
+- Filter products by category, and price range.
+- Sort products by price and date added.
+- Responsive design using Tailwind CSS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Setup
+
+### Prerequisites
+- Node.js 
+- npm
+
+### Getting Started
+1. Clone the repository:
+- git clone https://github.com/masud467/SmartShopper-for-client
+- cd backend-repo
+3. Install dependencies:
+npm install
+4. Create a .env file at the root of your project and add the following environment variables:
+REACT_APP_API_URL=http://localhost:6001
+5. Run the development server:
+npm run dev/npm start
+

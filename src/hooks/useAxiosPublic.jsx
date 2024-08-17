@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const axiosPublic= axios.create({
-    baseURL:'http://localhost:6001'
+    baseURL:'https://smart-shopper-for-server.vercel.app/'
 })
 const useAxiosPublic = () => {
     return axiosPublic

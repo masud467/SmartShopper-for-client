@@ -23,8 +23,8 @@ This is the frontend for the **SmartShopper** web application, which allows user
 
 ### Getting Started
 1. Clone the repository:
--git clone https://github.com/masud467/SmartShopper-for-client
--cd backend-repo
+- git clone https://github.com/masud467/SmartShopper-for-client
+- cd backend-repo
 3. Install dependencies:
 npm install
 4. Create a .env file at the root of your project and add the following environment variables:

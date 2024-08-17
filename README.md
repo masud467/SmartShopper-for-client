@@ -1,4 +1,5 @@
 ## Website Name: SmartShopper
+### Live Link: https://smartshopper-bbd02.web.app/
 Server Repository: https://github.com/masud467/smartShopper-for-server
 ## Concept:
 This is the frontend for the **SmartShopper** web application, which allows users to browse, filter, sort, and search products in an online store. It is built using React.js and React Query for data fetching.

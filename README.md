@@ -25,11 +25,12 @@ This is the frontend for the **SmartShopper** web application, which allows user
 
 1. Clone the repository:
 git clone https://github.com/masud467/SmartShopper-for-client
+
 cd backend-repo
-2. Install dependencies:
+3. Install dependencies:
 npm install
-3. Create a .env file at the root of your project and add the following environment variables:
+4. Create a .env file at the root of your project and add the following environment variables:
 REACT_APP_API_URL=http://localhost:6001
-4. Run the development server:
+5. Run the development server:
 npm run dev/npm start
 

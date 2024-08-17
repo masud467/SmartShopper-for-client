@@ -12,14 +12,15 @@ const Home = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(1000); // Default price range
+    const [sortBy, setSortBy] = useState('');
     const {
         data:paginatedData = [],
         isLoading,
         refetch,
       } = useQuery({
-        queryKey: ["products", currentPage, limit, searchQuery, selectedCategory, minPrice, maxPrice],
+        queryKey: ["products", currentPage, limit, searchQuery, selectedCategory, minPrice, maxPrice, sortBy],
         queryFn: async () => {
-          const { data } = await axiosPublic.get(`/products?page=${currentPage}&limit=${limit}&name=${searchQuery}&category=${selectedCategory}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
+          const { data } = await axiosPublic.get(`/products?page=${currentPage}&limit=${limit}&name=${searchQuery}&category=${selectedCategory}&minPrice=${minPrice}&maxPrice=${maxPrice}&sortBy=${sortBy}`);
     
           return data;
         },
@@ -46,6 +47,12 @@ const Home = () => {
     const handleSearch = (e) => {
         e.preventDefault();
         setCurrentPage(1); // Reset to first page on new search
+        refetch();
+      };
+
+      const handleSortChange = (e) => {
+        setSortBy(e.target.value);
+        setCurrentPage(1); // Reset page when sorting changes
         refetch();
       };
       // console.log(users)
@@ -113,6 +120,19 @@ const Home = () => {
                         Search
                     </button>
                 </form>
+                {/* Sort Dropdown */}
+                <div className="flex space-x-4 mb-4">
+                    <select
+                        value={sortBy}
+                        onChange={handleSortChange}
+                        className="border border-gray-300 rounded px-4 py-2"
+                    >
+                        <option value="">Sort By</option>
+                        <option value="priceAsc">Price: Low to High</option>
+                        <option value="priceDesc">Price: High to Low</option>
+                        <option value="dateDesc">Date Added: Newest First</option>
+                    </select>
+                </div>
             </div>
 
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-10">

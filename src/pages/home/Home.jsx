@@ -8,14 +8,18 @@ const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [limit, setLimit] = useState(10); // Number of products per page
     const [searchQuery, setSearchQuery] = useState(''); 
+    // const [selectedBrand, setSelectedBrand] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(1000); // Default price range
     const {
         data:paginatedData = [],
         isLoading,
         refetch,
       } = useQuery({
-        queryKey: ["products", currentPage, limit, searchQuery],
+        queryKey: ["products", currentPage, limit, searchQuery, selectedCategory, minPrice, maxPrice],
         queryFn: async () => {
-          const { data } = await axiosPublic.get(`/products?page=${currentPage}&limit=${limit}&name=${searchQuery}`);
+          const { data } = await axiosPublic.get(`/products?page=${currentPage}&limit=${limit}&name=${searchQuery}&category=${selectedCategory}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
     
           return data;
         },
@@ -50,14 +54,56 @@ const Home = () => {
     return (
        
            <div className="container mx-auto px-4 pt-28">
-            {/* Search Bar */}
-            <div className="flex justify-center mb-8">
-                <form onSubmit={handleSearch} className="flex space-x-4">
+            {/* Search and Filter Bar */}
+            <div className="mb-8">
+                <form onSubmit={handleSearch} className="flex space-x-4 mb-4">
+                    {/* Search Bar */}
                     <input 
                         type="text"
                         placeholder="Search products by name"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
+                        className="border border-gray-300 rounded px-4 py-2"
+                    />
+                    {/* Ratings Filter */}
+                    {/* <select 
+                        value={selectedBrand} 
+                        onChange={(e) => setSelectedBrand(e.target.value)}
+                        className="border border-gray-300 rounded px-4 py-2"
+                    >
+                        <option value="">All Brands</option>
+                        <option value="Brand A">Brand A</option>
+                        <option value="Brand B">Brand B</option>
+                        <option value="Brand C">Brand C</option>
+                    </select> */}
+                    {/* Category Filter */}
+                    <select 
+                        value={selectedCategory} 
+                        onChange={(e) => setSelectedCategory(e.target.value)}
+                        className="border border-gray-300 rounded px-4 py-2"
+                    >
+                        <option value="">All Categories</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Health">Health</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Outdoor">Outdoor</option>
+                        <option value="Kitchen">Kitchen</option>
+                        <option value="Sports">Sports</option>
+                    </select>
+                    {/* Price Range Filter */}
+                    <input
+                        type="number"
+                        placeholder="Min Price"
+                        value={minPrice}
+                        onChange={(e) => setMinPrice(e.target.value)}
+                        className="border border-gray-300 rounded px-4 py-2"
+                    />
+                    <input
+                        type="number"
+                        placeholder="Max Price"
+                        value={maxPrice}
+                        onChange={(e) => setMaxPrice(e.target.value)}
                         className="border border-gray-300 rounded px-4 py-2"
                     />
                     <button
